@@ -1,5 +1,5 @@
 import numpy as np
-from code.model import create_model
+from model import create_model
 from utils import *
 import shutil
 
@@ -10,38 +10,38 @@ if __name__ == '__main__':
 
 
     # Define model config and set of heating, EV loads, and/or GHG reduction target appropriately
-    # model_config = 1
-    #
-    # # 0: LCT + Elec. specified, GHG returned
-    # if model_config == 0:
-    #
-    #     lowc_targets   = [0.7]
-    #     perc_elec_load = [0.4]
-    #
-    #
-    #     ghg_targets    = [np.nan]*len(perc_elec_load) # indeterminate
-    #
-    # # 1: LCT + GHG specified, Elec. returned
-    # elif model_config == 1:
-    #     lowc_targets = [0.7]
-    #     ghg_targets  = [0.4]
-    #     perc_elec_load = [np.nan]*len(lowc_targets) # indeterminate
-    #
-    # # 2: Elec. + GHG specified, LCT returned.
-    # else: # model_config  == 2:
-    #     ghg_targets    = [0.85]
-    #     perc_elec_load = [1]
-    #     lowc_targets   = [np.nan]*len(ghg_targets) # indeterminate
+    model_config = 0
 
-    model_configs  = [1, 0, 1, 1, 1, 2]
-    lowc_targets   = [0.7, 0.995, 0.995, 0.7, 0.995, np.nan]
-    perc_elec_load = [np.nan, 0.37645, np.nan, np.nan, np.nan, 1]
-    ghg_targets    = [0.4, np.nan, 0.625, 0.625, 0.85, 0.85]
-    #
-    # model_configs = [ 2]
-    # lowc_targets = [np.nan]
-    # perc_elec_load = [ 1]
-    # ghg_targets = [ 0.7]
+    # 0: LCT + Elec. specified, GHG returned
+    if model_config == 0:
+
+        lowc_targets   = [0.7]
+        perc_elec_load = [0.4]
+        ghg_targets    = [np.nan]*len(perc_elec_load) # indeterminate
+        model_configs  = [model_config] * len(perc_elec_load)
+
+
+    # 1: LCT + GHG specified, Elec. returned
+    elif model_config == 1:
+        lowc_targets = [0.7]
+        ghg_targets  = [0.4]
+        perc_elec_load = [np.nan]*len(lowc_targets) # indeterminate
+        model_configs  = [model_config] * len(lowc_targets)
+
+    # 2: Elec. + GHG specified, LCT returned.
+    else: # model_config  == 2:
+        ghg_targets    = [0.85]
+        perc_elec_load = [1]
+        lowc_targets   = [np.nan]*len(ghg_targets) # indeterminate
+        model_configs  = [model_config] * len(ghg_targets)
+
+
+    ## Testing configs for sensitivity analysis
+    # model_configs  = [1, 0, 1, 1, 1, 2]
+    # lowc_targets   = [0.7, 0.995, 0.995, 0.7, 0.995, np.nan]
+    # perc_elec_load = [np.nan, 0.37645, np.nan, np.nan, np.nan, 1]
+    # ghg_targets    = [0.4, np.nan, 0.625, 0.625, 0.85, 0.85]
+
 
 
 

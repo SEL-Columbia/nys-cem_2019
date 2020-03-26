@@ -1,6 +1,6 @@
 # Model run parameters
 #model_config: 0
-data_dir: '../data_uploads'
+data_dir: 'data_uploads'
 results_dir: '../model_results'
 solve_model: False
 nuclear_boolean: False
