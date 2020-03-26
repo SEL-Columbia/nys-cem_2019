@@ -1,0 +1,22 @@
+name: nys-cem
+channels:
+- anaconda
+
+dependencies:
+- python=3.7
+- numpy
+- pip
+- gurobi
+- xlrd
+
+- pip:
+    - ipdb
+    - argparse
+    - matplotlib
+    - sklearn
+    - pandas
+    - seaborn
+    - pyyaml
+    - openpyxl
+    - xlsxwriter
+
